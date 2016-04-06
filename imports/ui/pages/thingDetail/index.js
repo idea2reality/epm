@@ -65,3 +65,5 @@ export class ThingDetailCtrl {
 		)
 	}
 }
+
+ThingDetailCtrl.$inject = ['$scope', '$stateParams', '$mdToast']

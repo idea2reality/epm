@@ -9,7 +9,7 @@ import './rootRedirector.tpl.html'
 export class RootRedirectorCtrl {
 	constructor($scope, $state) {
 		$scope.viewModel(this);
-    
+
 		this.subscribe('things', null, () => {
 			$state.go('thingDetail', {
 				thingId: Things.findOne()._id
@@ -17,3 +17,5 @@ export class RootRedirectorCtrl {
 		})
 	}
 }
+
+RootRedirectorCtrl.$inject = ['$scope', '$state']
