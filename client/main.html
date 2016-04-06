@@ -1,0 +1,45 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<title>Smart One</title>
+
+	<base href="/">
+</head>
+
+<body layout="row">
+	<i2r-sidenav layout></i2r-sidenav>
+
+	<!-- <i2r-view></i2r-view> -->
+
+	<div flex layout="column">
+		<md-toolbar>
+
+			<div layout class="md-toolbar-tools">
+				<md-button hide-gt-sm class="md-icon-button" ng-click="vm.toogleSidenav()">
+					<md-icon md-svg-icon="menu"></md-icon>
+				</md-button>
+
+				<!-- Title -->
+				<h1>
+  				<span></span>
+  			</h1>
+
+				<span flex></span>
+
+				<!-- User Account -->
+				<!-- <md-button>로그인</md-button> -->
+
+			</div>
+
+		</md-toolbar>
+
+		<!-- Main Content -->
+		<md-content ui-view flex layout layout-padding></md-content>
+
+	</div>
+
+
+</body>

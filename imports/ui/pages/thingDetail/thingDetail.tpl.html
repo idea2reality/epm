@@ -1,0 +1,139 @@
+<div flex>
+
+	<!-- Header -->
+	<div layout layout-align="center center">
+
+		<md-icon md-svg-icon="{{$ctrl.thing.avatar}}" class="avatar"></md-icon>
+
+		<h1 style="margin-left:5px">{{$ctrl.thing.name}}</h1>
+
+		<svg ng-show="$ctrl.thing.isAlive" style="margin-left: 5px" height="30" width="10">
+			<circle cx="5" cy="5" r="5" fill="lime" />
+		</svg>
+		<svg ng-hide="$ctrl.thing.isAlive" style="margin-left: 5px" height="30" width="10">
+			<circle cx="5" cy="5" r="5" fill="red" />
+		</svg>
+
+	</div>
+
+	<md-divider style="margin-top: 10px"></md-divider>
+
+	<md-content style="margin-bottom: 20px">
+
+		<!-- <h3 layout layout-align="center" class="md-headline">LED</h3> -->
+
+		<div layout ng-repeat="led in $ctrl.modules">
+
+			<div flex layout layout-align="center center">
+
+				<div layout layout-padding layout-align="center center">
+					<span class="md-body-1">{{led.name}}</span>
+				</div>
+
+				<!-- <md-switch ng-model="led.value" ng-change="$ctrl.setLed(led._id, led.value)" ng-disabled="!$ctrl.thing.isAlive"></md-switch> -->
+				<md-switch ng-model="led.value" ng-change="$ctrl.setLed(led)"></md-switch>
+
+			</div>
+
+			<!-- Basic LED -->
+			<div flex layout layout-align="center center" ng-if="led.type === 'basic'">
+
+				<div layout layout-padding layout-align="center center">
+					<span class="md-body-1">{{led.name}}</span>
+				</div>
+
+				<md-switch ng-model="led.value" ng-change="vm.setLed(led._id, led.value)" ng-disabled="!$ctrl.thing.isAlive"></md-switch>
+
+			</div>
+
+			<!-- Dimming LED -->
+			<div flex layout ng-if="led.type === 'dim'">
+
+				<div flex="10" layout layout-align="center center">
+					<span class="md-body-1">{{led.name}}</span>
+				</div>
+
+				<md-slider flex md-discrete ng-model="led.value" ng-change="vm.setLed(led._id, led.value)" ng-disabled="!$ctrl.thing.isAlive" step="1" min="0" max="255"></md-slider>
+
+				<span flex="5"></span>
+
+			</div>
+
+			<!-- CC3200 LED -->
+			<div flex layout layout-align="center center" ng-if="led.type === 'cc3200'">
+
+				<div layout layout-padding layout-align="center center">
+					<span class="md-body-1">{{led.name}}</span>
+				</div>
+
+				<md-switch ng-model="led.value" ng-change="vm.setLed(led._id, led.value)" ng-disabled="!$ctrl.thing.isAlive"></md-switch>
+
+			</div>
+
+			<!-- CC3200-DIM LED -->
+			<div flex layout layout-padding ng-if="led.type === 'cc3200-dim'">
+				<div flex layout="column">
+					<div layout layout-align="center center">
+						<h3 class="md-title">{{led.name}}</h3>
+					</div>
+
+					<div layout>
+
+						<div flex="10" layout layout-align="center center">
+							<span class="md-body-1">R</span>
+						</div>
+
+						<md-slider flex md-discrete ng-model="led.value[0]" ng-change="vm.setLed(led._id, led.value)" ng-disabled="!$ctrl.thing.isAlive" step="1" min="0" max="255"></md-slider>
+
+						<span flex="5"></span>
+
+					</div>
+
+					<div layout>
+
+						<div flex="10" layout layout-align="center center">
+							<span class="md-body-1">G</span>
+						</div>
+
+						<md-slider flex md-discrete ng-model="led.value[1]" ng-change="vm.setLed(led._id, led.value)" ng-disabled="!$ctrl.thing.isAlive" step="1" min="0" max="255"></md-slider>
+
+						<span flex="5"></span>
+
+					</div>
+
+					<div layout>
+
+						<div flex="10" layout layout-align="center center">
+							<span class="md-body-1">B</span>
+						</div>
+
+						<md-slider flex md-discrete ng-model="led.value[2]" ng-change="vm.setLed(led._id, led.value)" ng-disabled="!$ctrl.thing.isAlive" step="1" min="0" max="255"></md-slider>
+
+						<span flex="5"></span>
+
+					</div>
+
+					<div layout>
+
+						<span flex="10"></span>
+
+						<md-input-container>
+							<label>LED ID</label>
+							<md-select ng-model="led._id" ng-change="vm.setLedId(led, {{led._id}})">
+								<md-option ng-repeat="num in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '255']" ng-value="num">
+									{{num}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</md-content>
+
+
+
+</div>

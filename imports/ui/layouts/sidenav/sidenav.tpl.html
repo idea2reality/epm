@@ -1,0 +1,36 @@
+<md-sidenav flex class="site-sidenav md-sidenav-left md-whiteframe-10dp" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+
+	<!-- Sidenav Toolbar -->
+	<md-toolbar hide show-gt-sm>
+
+		<div class="md-toolbar-tools">
+			<h1>
+				<span>Jun</span>
+			</h1>
+		</div>
+
+	</md-toolbar>
+	<!-- Sidenav List -->
+	<md-list>
+
+		<md-list-item ng-repeat="edison in $ctrl.things">
+			<md-button href="/thing/{{edison._id}}" ng-click="vm.toogleSidenav()">
+
+				<md-icon md-svg-icon="{{edison.avatar}}" class="avatar"></md-icon>
+
+				<span>{{edison.name}}</span>
+
+				<!-- Alive Flag -->
+				<svg ng-show="edison.isAlive" style="margin-left: 3px" height="15" width="6">
+					<circle cx="3" cy="3" r="3" fill="lime" />
+				</svg>
+				<svg ng-hide="edison.isAlive" style="margin-left: 3px" height="15" width="6">
+					<circle cx="3" cy="3" r="3" fill="red" />
+				</svg>
+
+			</md-button>
+		</md-list-item>
+
+	</md-list>
+
+</md-sidenav>
