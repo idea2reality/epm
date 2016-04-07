@@ -5,11 +5,11 @@ import { Modules } from '../../api/modules/modules.js'
 // if the database is empty on server start, create some sample data.
 Meteor.startup(() => {
     if (Things.find().count() === 0) {
-        const thingId = 'edison'
+        const thingId = 'inomax'
 
         const thing = {
             _id: thingId,
-            name: 'Thing 1',
+            name: 'inoMAX',
             avatar: 'svg-11',
             isAlive: false,
             protoc: {
@@ -23,7 +23,7 @@ Meteor.startup(() => {
         for (let i = 0; i < 10; i++) {
             let module = {
                 _id: 'm' + i,
-                name: 'Charger ' + i,
+                name: '충전기 ' + i,
                 type: 'charger',
                 value: false,
                 thingId: thingId,
@@ -35,7 +35,7 @@ Meteor.startup(() => {
 
         modules.push({
             _id: 'm10',
-            name: 'Sterilizer',
+            name: '소독',
             type: 'sterilizer',
             value: false,
             thingId: thingId,
@@ -44,7 +44,7 @@ Meteor.startup(() => {
 
         modules.push({
             _id: 'm11',
-            name: 'Fan 1',
+            name: '팬 1',
             type: 'fan',
             value: false,
             thingId: thingId,
@@ -53,7 +53,7 @@ Meteor.startup(() => {
 
         modules.push({
             _id: 'm12',
-            name: 'Fan 2',
+            name: '팬 2',
             type: 'fan',
             value: false,
             thingId: thingId,
